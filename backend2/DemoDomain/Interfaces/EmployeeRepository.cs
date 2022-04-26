@@ -39,7 +39,7 @@ namespace DemoDomain.Interfaces
                 }
                 else
                 {
-                    employees = unitOfWork.Employees.GetAll().Result.OrderBy(a => a.Id).Skip(skipCount).Take(maxResultCount).ToList().Where(x => x.IsDeleted == false).ToList(); ;
+                    employees = unitOfWork.Employees.GetAll().Result.OrderBy(a => a.Id).Skip(skipCount).Take(maxResultCount).ToList().Where(x => x.IsDeleted == false).ToList(); 
                     return employees;
                 }
             }
@@ -54,7 +54,14 @@ namespace DemoDomain.Interfaces
         {
 
             var Getemployees = new List<Employee>();
-           
+            if (obj.IsDeleted == true)
+            {
+                return "You Cannot delete person before Creating";
+            }
+            if (obj.CreatedBy != null && obj.CreatedBy > 0)
+            {
+                return "User Id Required";
+            }
             if (!string.IsNullOrEmpty(obj.Email))
 
             Getemployees = unitOfWork.Employees.GetAll().Result.ToList();
@@ -103,7 +110,7 @@ namespace DemoDomain.Interfaces
         {
             try
             {
-                if (obj.ModifiedBy == null) 
+                if (obj.ModifiedBy == null || obj.ModifiedBy==0) 
                 {
                    return "Modifiedby Id Required"; 
                 }
@@ -139,7 +146,7 @@ namespace DemoDomain.Interfaces
         {
 
             var GetEmployee = unitOfWork.Employees.Get(id);
-            if (GetEmployee!=null)
+            if (GetEmployee!=null && GetEmployee.Result.IsDeleted != true)
             {
                 return await GetEmployee;
             }

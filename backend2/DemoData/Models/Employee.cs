@@ -21,6 +21,7 @@ namespace DemoData.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Age is required")]
         [Display(Name = "Age")]
+        [Range(1, 120)]
         public int? Age { get; set; }
         [Required(ErrorMessage = "Department  is required")]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]

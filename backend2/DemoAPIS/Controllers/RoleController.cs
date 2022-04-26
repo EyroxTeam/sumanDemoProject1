@@ -28,7 +28,7 @@ namespace DemoAPIS.Controllers
             try
             {
                 var Role = rolerepositoy.GetAllRole(skipCount, maxResultCount, search);
-                if (Role != null)
+                if (Role != null && Role.Count > 0)
                 {
                     return StatusCode(StatusCodes.Status200OK, new ResponseBack<List<Role>> { Status = "Ok", Message = "RecordFound", Data = Role });
                 }
@@ -39,7 +39,7 @@ namespace DemoAPIS.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+       
 
         [HttpPost(nameof(CreateRole))]
         public IActionResult CreateRole(Role obj)
@@ -50,7 +50,15 @@ namespace DemoAPIS.Controllers
                 return BadRequest(message);
             }
             string result = rolerepositoy.AddRole(obj);
-            if (result == "Role Already Exists")
+            if (result== "You Cannot delete person before Creating")
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "You Cannot Delete Person Before Creating", Data = null });
+            }
+            if (result== "User Id Required")
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "User Id Required", Data = null });
+            }
+           else if (result == "Role Already Exists")
             {
                 return StatusCode(StatusCodes.Status409Conflict, new ResponseBack<Role> { Status = "Ok", Message = "Role Already Exists", Data = null });
             }
@@ -77,6 +85,11 @@ namespace DemoAPIS.Controllers
             }
 
             string result = rolerepositoy.UpdateRole(obj);
+            if (result== "Modifiedby Id Required")
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "User Id Required", Data = null });
+            }
+
             if (result == "Role Updated Successfully")
             {
                 return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Updated Successfully", Data = null });

@@ -1,4 +1,4 @@
-﻿using DemoDomain.Interfaces;
+using DemoDomain.Interfaces;
 using DemoRepository.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +16,7 @@ namespace DemoAPIS.DependencyInjection
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
             services.AddDbContext<DemoDbContext>(opt => opt
-                .UseSqlServer("Server=localhost; Database=DemoAPIS;Trusted_Connection=True;"));
+                .UseSqlServer("Server=DESKTOP-602K13J\\SQLEXPRESS; Database=DemoAPIS;Trusted_Connection=True;"));
             services.AddMvc()
             .AddSessionStateTempDataProvider();
             services.AddSession();

@@ -17,7 +17,7 @@ namespace DemoAPIS.DependencyInjection
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
             services.AddDbContext<DemoDbContext>(opt => opt
-                .UseSqlServer("Server=DESKTOP-F6QIM5U; Database=DemoAPIS;Trusted_Connection=True;"));
+                .UseSqlServer("Server=DESKTOP-602K13J\\SQLEXPRESS; Database=DemoAPIS;Trusted_Connection=True;"));
             services.AddMvc()
             .AddSessionStateTempDataProvider();
             services.AddSession();

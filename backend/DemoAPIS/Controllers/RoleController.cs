@@ -1,4 +1,4 @@
-﻿using DemoAPIS.Configurations;
+using DemoAPIS.Configurations;
 using DemoDomain.Interfaces;
 using DemoDomain.Models;
 using Microsoft.AspNetCore.Http;
@@ -15,118 +15,157 @@ namespace DemoAPIS.Controllers
     [ApiController]
     public class RoleController : GenericController
     {
-       
 
-        private readonly IUnitOfWork _unitOfWork;
-        public RoleController(IUnitOfWork unitOfWork)
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IRoleRepository emprepositoy;
+
+    public RoleController(IUnitOfWork unitOfWork, IRoleRepository emprepositoy)
+    {
+      _unitOfWork = unitOfWork;
+      emprepositoy = emprepositoy;
+    }
+
+    [HttpGet(nameof(GetRoleList))]
+    public IActionResult GetRoleList(int skipCount, int maxResultCount, string search)
+    {
+      if (maxResultCount == 0)
+      {
+        maxResultCount = 10;
+      }
+      string test = string.Empty;
+      search = search?.ToLower();
+      int totalRecord = _unitOfWork.Roles.GetAll().Result.Count();
+      if (totalRecord > 0)
+      {
+        var Roles = new List<Role>();
+        if (!string.IsNullOrEmpty(search))
         {
-            _unitOfWork = unitOfWork;
+          Roles = _unitOfWork.Roles.GetAll().Result.Where(a => a.Name.ToLower().Contains(search)
+             ).OrderBy(a => a.Id).Skip(skipCount).Take(maxResultCount).ToList().Where(x => x.IsDeleted == false).ToList();
+          return StatusCode(StatusCodes.Status200OK, new ResponseBack<List<Role>> { Status = "Ok", Message = "RecordFound", Data = Roles });
+
         }
-        [HttpGet]
-        public string GetRolesList(int startIndex, int pagelength, string search)
+        else
         {
-            if (pagelength == 0)
-            {
-                pagelength = 10;
-            }
-            string test = string.Empty;
-            search = search?.ToLower();
-            int totalRecord = _unitOfWork.Roles.GetAll().Result.Count();
-            var roles = new List<Role>();
-            if (!string.IsNullOrEmpty(search))
-                roles = _unitOfWork.Roles.GetAll().Result.Where(a => a.Name.ToLower().Contains(search)
-              ).OrderBy(a => a.Id).Skip(startIndex).Take(pagelength).ToList();
-            else
-                roles = _unitOfWork.Roles.GetAll().Result.OrderBy(a => a.Id).Skip(startIndex).Take(pagelength).ToList();
-
-            StringBuilder sb = new StringBuilder();
-            sb.Clear();
-            sb.Append("{");
-            sb.Append("\"TotalRecords\": ");
-            sb.Append(totalRecord);
-            sb.Append(",");
-            sb.Append("\"TotalDisplayRecords\": ");
-            sb.Append(totalRecord);
-            sb.Append(",");
-            sb.Append("\"Data\": ");
-            sb.Append(JsonConvert.SerializeObject(roles));
-            sb.Append("}");
-            return sb.ToString();
-        }
-        [HttpPost(nameof(CreateRole))]
-        public IActionResult CreateRole(Role obj)
-        {
-            if (!ModelState.IsValid)
-            {
-                var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
-                return BadRequest(message);
-            }
-            var roles = new List<Role>();
-            //   var data = _unitOfWork.Roles.Get(obj.Name);
-            if (!string.IsNullOrEmpty(obj.Name))
-
-                roles = _unitOfWork.Roles.GetAll().Result.ToList();
-            if (roles != null)
-            {
-                var GetRole = roles.Exists(m => m.Name.Equals(obj.Name, StringComparison.CurrentCultureIgnoreCase));
-                if (GetRole)
-                {
-                    return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Already Exists", Data = null });
-                }
-                else {
-                    var result = _unitOfWork.Roles.Add(obj);
-                    _unitOfWork.Complete();
-                    if (result is not null) return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role added Successfully", Data = null });
-                    else return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Ok", Message = "Error In Role Creating", Data = null });
-                }
-            }
-            else {
-                var result = _unitOfWork.Roles.Add(obj);
-                _unitOfWork.Complete();
-                if (result is not null) return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role added Successfully", Data = null });
-                else return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Ok", Message = "Error In Role Creating", Data = null });
-            }
-           return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Ok", Message = "Error In Role Creating", Data = null });
+          Roles = _unitOfWork.Roles.GetAll().Result.OrderBy(a => a.Id).Skip(skipCount).Take(maxResultCount).ToList().Where(x => x.IsDeleted == false).ToList(); 
+          return StatusCode(StatusCodes.Status200OK, new ResponseBack<List<Role>> { Status = "Ok", Message = "RecordFound", Data = Roles });
         }
 
-        [HttpPut(nameof(UpdateRole))]
-        public IActionResult UpdateRole(Role obj)
-        {
-            if (!ModelState.IsValid)
-            {
-                var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
-                return BadRequest(message);
-            }
-            _unitOfWork.Roles.Update(obj);
-            _unitOfWork.Complete();
-            return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Updated Successfully", Data = null }); ;
-        } 
-        [HttpPut(nameof(DeleteRole))]
-        public IActionResult DeleteRole(Role obj)
-        {
-            if (!ModelState.IsValid)
-            {
-                var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
-                return BadRequest(message);
-            }
+      }
+      else
+      {
 
-            _unitOfWork.Roles.Delete(obj);
-            _unitOfWork.Complete();
-            return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Deleted Successfully", Data = null }); 
-        }
-        [HttpGet(nameof(RoleGetByID))]
-        public IActionResult RoleGetByID(int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
-                return BadRequest(message);
-            }
+        return StatusCode(StatusCodes.Status404NotFound, new ResponseBack<List<Role>> { Status = "Error", Message = "RecordNotFound", Data = null });
 
-            var GetRole = _unitOfWork.Roles.Get(id);
-        //    return Ok(GetRole);
-            return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Deleted Successfully", Data = GetRole.Result }) ;
-        }
+      }
+      return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<List<Role>> { Status = "Error", Message = "Bad Request", Data = null });
 
     }
+
+    [HttpPost(nameof(CreateRole))]
+    public IActionResult CreateRole(Role obj)
+    {
+      if (!ModelState.IsValid)
+      {
+        var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+        return BadRequest(message);
+      }
+      if (obj.IsDeleted == true)
+      {
+        return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Employee> { Status = "Error", Message = "You Cannot Delete Person Before Creating", Data = null });
+      }
+      if (obj.CreatedBy == null || obj.CreatedBy == 0)
+      {
+        return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "User Id Required", Data = null });
+      }
+      var GetRoles = new List<Role>();
+
+      if (!string.IsNullOrEmpty(obj.Name))
+
+        GetRoles = _unitOfWork.Roles.GetAll().Result.ToList();
+      if (GetRoles != null)
+      {
+        var GetEmp = GetRoles.Where(m => m.Name == obj.Name).FirstOrDefault();
+        if (GetEmp != null)
+        {
+          return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Already Exists", Data = null });
+        }
+        else
+        {
+          obj.CreatedDate = DateTime.Now;
+          obj.IsDeleted = false;
+          var result = _unitOfWork.Roles.Add(obj);
+          var Record = _unitOfWork.Complete();
+          if (result is not null) return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Added Successfully", Data = null });
+          else return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "Error In Role Creating", Data = null });
+        }
+      }
+      else
+      {
+        obj.CreatedDate = DateTime.Now;
+        obj.IsDeleted = false;
+        var result = _unitOfWork.Roles.Add(obj);
+        _unitOfWork.Complete();
+        if (result is not null) return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Added Successfully", Data = null });
+        else return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "Error In Role Creating", Data = null });
+      }
+      return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "Error In Role Creating", Data = null });
+    }
+
+    [HttpPut(nameof(UpdateRole))]
+    public IActionResult UpdateRole(Role obj)
+    {
+      if (!ModelState.IsValid)
+      {
+        var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+        return BadRequest(message);
+      }
+      if (obj.ModifiedBy == null || obj.ModifiedBy == 0)
+      {
+        return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Role> { Status = "Error", Message = "User Id Required", Data = null });
+      }
+      obj.ModifiedDate = DateTime.Now;
+      _unitOfWork.Roles.Update(obj);
+      _unitOfWork.Complete();
+      return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Updated Successfully", Data = null });
+    }
+
+    [HttpDelete(nameof(DeleteRole))]
+    public IActionResult DeleteRole(int id)
+    {
+      if (!ModelState.IsValid)
+      {
+        var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+        return BadRequest(message);
+      }
+
+      var obj = _unitOfWork.Roles.Get(id);
+      obj.Result.DeletedDate = DateTime.Now;
+      obj.Result.IsDeleted = true;
+      obj.Result.DeletedByUserId = 2;
+      _unitOfWork.Roles.Update(obj.Result);
+      _unitOfWork.Complete();
+      return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Deleted Successfully", Data = null });
+    }
+    [HttpGet(nameof(RoleGetByID))]
+    public IActionResult RoleGetByID(int id)
+    {
+      if (!ModelState.IsValid)
+      {
+        var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+        return BadRequest(message);
+      }
+
+      var GetRole = _unitOfWork.Roles.Get(id);
+      if (GetRole.Result != null && GetRole.Result.IsDeleted != true)
+      {
+        return StatusCode(StatusCodes.Status200OK, new ResponseBack<Role> { Status = "Ok", Message = "Role Found Successfully", Data = GetRole.Result });
+      }
+      else {
+        return StatusCode(StatusCodes.Status404NotFound, new ResponseBack<Role> { Status = "Error", Message = "Role NotFound Successfully", Data = null });
+      }
+   
+    }
+
+  }
 }

@@ -34,3 +34,15 @@ D:\Downloads\DemoProjectGenericRepo\DemoDomain\obj\Debug\net5.0\DemoDomain.cspro
 D:\Downloads\DemoProjectGenericRepo\DemoDomain\obj\Debug\net5.0\DemoDomain.dll
 D:\Downloads\DemoProjectGenericRepo\DemoDomain\obj\Debug\net5.0\ref\DemoDomain.dll
 D:\Downloads\DemoProjectGenericRepo\DemoDomain\obj\Debug\net5.0\DemoDomain.pdb
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\bin\Debug\net5.0\DemoDomain.deps.json
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\bin\Debug\net5.0\DemoDomain.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\bin\Debug\net5.0\ref\DemoDomain.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\bin\Debug\net5.0\DemoDomain.pdb
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\DemoDomain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\DemoDomain.AssemblyInfoInputs.cache
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\DemoDomain.AssemblyInfo.cs
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\DemoDomain.csproj.CoreCompileInputs.cache
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\DemoDomain.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\ref\DemoDomain.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\DemoDomain.pdb
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoDomain\obj\Debug\net5.0\DemoDomain.csproj.AssemblyReference.cache
