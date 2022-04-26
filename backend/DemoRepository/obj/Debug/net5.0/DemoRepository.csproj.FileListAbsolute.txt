@@ -52,3 +52,21 @@ D:\Downloads\DemoProjectGenericRepo\DemoRepository\obj\Debug\net5.0\DemoReposito
 D:\Downloads\DemoProjectGenericRepo\DemoRepository\obj\Debug\net5.0\ref\DemoRepository.dll
 D:\Downloads\DemoProjectGenericRepo\DemoRepository\obj\Debug\net5.0\DemoRepository.pdb
 D:\Downloads\DemoProjectGenericRepo\DemoRepository\obj\Debug\net5.0\DemoRepository.genruntimeconfig.cache
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\DemoRepository.deps.json
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\DemoRepository.runtimeconfig.json
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\DemoRepository.runtimeconfig.dev.json
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\DemoRepository.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\ref\DemoRepository.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\DemoRepository.pdb
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\DemoDomain.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\bin\Debug\net5.0\DemoDomain.pdb
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.csproj.AssemblyReference.cache
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.AssemblyInfoInputs.cache
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.AssemblyInfo.cs
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.csproj.CoreCompileInputs.cache
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.csproj.CopyComplete
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\ref\DemoRepository.dll
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.pdb
+C:\Users\Syed Ali\Downloads\sumanDemoProject1-main\sumanDemoProject1-main\backend\DemoRepository\obj\Debug\net5.0\DemoRepository.genruntimeconfig.cache

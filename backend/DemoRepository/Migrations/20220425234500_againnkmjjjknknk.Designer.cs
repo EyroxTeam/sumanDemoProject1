@@ -4,14 +4,16 @@ using DemoRepository.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DemoRepository.Migrations
 {
     [DbContext(typeof(DemoDbContext))]
-    partial class DemoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220425234500_againnkmjjjknknk")]
+    partial class againnkmjjjknknk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,14 +85,14 @@ namespace DemoRepository.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DeletedByUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("DeletedByUserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
@@ -101,8 +103,8 @@ namespace DemoRepository.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");

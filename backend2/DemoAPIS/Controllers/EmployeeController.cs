@@ -29,11 +29,11 @@ namespace DemoAPIS.Controllers
             {
                
                 var Employee = emprepositoy.GetAllEmployee(skipCount, maxResultCount, search);
-                if (Employee != null)
+                if (Employee != null && Employee.Count>0)
                 {
                     return StatusCode(StatusCodes.Status200OK, new ResponseBack<List<Employee>> { Status = "Ok", Message = "RecordFound", Data = Employee });
                 }
-                return StatusCode(StatusCodes.Status200OK, new ResponseBack<List<Employee>> { Status = "Ok", Message = "RecordNotFound", Data = null });
+                return StatusCode(StatusCodes.Status404NotFound, new ResponseBack<List<Employee>> { Status = "Ok", Message = "RecordNotFound", Data = null });
             }
             catch (Exception ex)
             {
@@ -50,7 +50,12 @@ namespace DemoAPIS.Controllers
                 var message = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
                 return BadRequest(message);
             }
+
             string result = emprepositoy.AddEmployee(obj);
+            if (result == "You Cannot delete person before Creating")
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Employee> { Status = "Error", Message = "You Cannot Delete Person Before Creating", Data = null });
+            }
             if (result == "Employee Already Exists")
             {
                 return StatusCode(StatusCodes.Status409Conflict, new ResponseBack<Employee> { Status = "Ok", Message = "Employee Already Exists", Data = null });
@@ -81,7 +86,7 @@ namespace DemoAPIS.Controllers
             }
             if (result== "Modifiedby Id Required")
             {
-                return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Employee> { Status = "Error", Message = "Modifiedby Id Required", Data = null });
+                return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Employee> { Status = "Error", Message = "UserId Id Required", Data = null });
             }
             return StatusCode(StatusCodes.Status400BadRequest, new ResponseBack<Employee> { Status = "Error", Message = "Employee Deleted Successfully", Data = null });
         }
@@ -111,7 +116,7 @@ namespace DemoAPIS.Controllers
             }
 
             var GetEmployee = emprepositoy.EmployeeGetById(id);
-            if (GetEmployee!=null)
+            if (GetEmployee.Result != null)
             {
                 return StatusCode(StatusCodes.Status200OK, new ResponseBack<Employee> { Status = "Ok", Message = "Employee Found Successfully", Data = GetEmployee.Result });
             }

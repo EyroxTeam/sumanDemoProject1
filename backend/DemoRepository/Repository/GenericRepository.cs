@@ -1,4 +1,4 @@
-﻿using DemoDomain.Interfaces;
+using DemoDomain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

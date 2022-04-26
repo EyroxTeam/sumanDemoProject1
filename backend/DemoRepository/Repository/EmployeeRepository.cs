@@ -1,4 +1,4 @@
-﻿using DemoDomain.Interfaces;
+using DemoDomain.Interfaces;
 using DemoDomain.Models;
 using System;
 using System.Collections.Generic;
@@ -8,11 +8,18 @@ using System.Threading.Tasks;
 
 namespace DemoRepository.Repository
 {
-    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
-    {
-        public EmployeeRepository(DemoDbContext context) : base(context)
-        {
+  public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
+  {
 
-        }
+   
+   
+
+    public EmployeeRepository(DemoDbContext context) : base(context)
+    {
+
+   
     }
+
+
+  }
 }

@@ -2,7 +2,7 @@
 
 namespace DemoRepository.Migrations
 {
-    public partial class _2104 : Migration
+    public partial class againnkmjjjknknkmm : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

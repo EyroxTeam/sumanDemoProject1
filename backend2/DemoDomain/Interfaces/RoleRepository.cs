@@ -51,12 +51,19 @@ namespace DemoDomain.Repository
         }
         public string AddRole(Role obj)
         {
-
+            if (obj.IsDeleted ==true)
+            {
+                return "You Cannot delete person before Creating";
+            }
+            if (obj.CreatedBy != null && obj.CreatedBy > 0)
+            {
+                return "User Id Required";
+            }
             var GetRoles = new List<Role>();
 
             if (!string.IsNullOrEmpty(obj.Name))
 
-                GetRoles = unitOfWork.Roles.GetAll().Result.ToList();
+            GetRoles = unitOfWork.Roles.GetAll().Result.ToList();
             if (GetRoles != null)
             {
                 var GetEmp = GetRoles.Where(m => m.Name == obj.Name).FirstOrDefault();
@@ -104,7 +111,7 @@ namespace DemoDomain.Repository
         {
             try
             {
-                if (obj.ModifiedBy == null)
+                if (obj.ModifiedBy == null || obj.ModifiedBy>0)
                 {
                     return "Modifiedby Id Required";
                 }
@@ -141,7 +148,7 @@ namespace DemoDomain.Repository
         {
 
             var GetRole = unitOfWork.Roles.Get(id);
-            if (GetRole != null)
+            if (GetRole != null && GetRole.Result.IsDeleted != true)
             {
                 return await GetRole;
             }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Downloads\\DemoProjectGenericRepo\\DemoRepository\\DemoRepository.csproj": {}
+    "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoRepository\\DemoRepository.csproj": {}
   },
   "projects": {
-    "D:\\Downloads\\DemoProjectGenericRepo\\DemoDomain\\DemoDomain.csproj": {
+    "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoDomain\\DemoDomain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Downloads\\DemoProjectGenericRepo\\DemoDomain\\DemoDomain.csproj",
+        "projectUniqueName": "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoDomain\\DemoDomain.csproj",
         "projectName": "DemoDomain",
-        "projectPath": "D:\\Downloads\\DemoProjectGenericRepo\\DemoDomain\\DemoDomain.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Downloads\\DemoProjectGenericRepo\\DemoDomain\\obj\\",
+        "projectPath": "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoDomain\\DemoDomain.csproj",
+        "packagesPath": "C:\\Users\\Syed Ali\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoDomain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Syed Ali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,21 +54,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Downloads\\DemoProjectGenericRepo\\DemoRepository\\DemoRepository.csproj": {
+    "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoRepository\\DemoRepository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Downloads\\DemoProjectGenericRepo\\DemoRepository\\DemoRepository.csproj",
+        "projectUniqueName": "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoRepository\\DemoRepository.csproj",
         "projectName": "DemoRepository",
-        "projectPath": "D:\\Downloads\\DemoProjectGenericRepo\\DemoRepository\\DemoRepository.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\Downloads\\DemoProjectGenericRepo\\DemoRepository\\obj\\",
+        "projectPath": "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoRepository\\DemoRepository.csproj",
+        "packagesPath": "C:\\Users\\Syed Ali\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoRepository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Syed Ali\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,8 +82,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Downloads\\DemoProjectGenericRepo\\DemoDomain\\DemoDomain.csproj": {
-                "projectPath": "D:\\Downloads\\DemoProjectGenericRepo\\DemoDomain\\DemoDomain.csproj"
+              "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoDomain\\DemoDomain.csproj": {
+                "projectPath": "C:\\Users\\Syed Ali\\Downloads\\sumanDemoProject1-main\\sumanDemoProject1-main\\backend\\DemoDomain\\DemoDomain.csproj"
               }
             }
           }
@@ -128,7 +128,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
